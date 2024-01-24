@@ -1,2 +1,7 @@
 #!/usr/bin/env node
-console.log("Welcome to the Brain Games!");
+/* eslint-disable import/extensions */
+
+// eslint-disable-next-line import/named
+import { User } from '../src/cli.js';
+
+User();
