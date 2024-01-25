@@ -1,38 +1,23 @@
 #!/usr/bin/env node
-/* eslint-disable no-console */
-import { createRequire } from 'module';
+import readlineSync from 'readline-sync';
+import { lose } from '../src/cli.js';
+import { brainGamesStart } from '../src/index.js';
+import { user } from '../src/cli.js';
 
-const require = createRequire(import.meta.url);
-const readlineSync = require('readline-sync');
-
-console.log('Welcome to the Brain Games!');
-const playerName = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${playerName}!`);
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-let mark = true;
-let level = 0;
-let keyAswer = '';
-
-while (mark === true && level < 3) {
-  level += 1;
+export const brainEven = (name) => {
   const number = Math.floor(Math.random() * 100);
   console.log(`Question: ${number}`);
   const answer = readlineSync.question('Your answer: ');
-  if (number % 2 === 0) {
-    keyAswer = 'yes';
-  } else {
-    keyAswer = 'no';
-  }
-  if (answer === keyAswer) {
+  const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
+  if (answer === correctAnswer) {
     console.log('Correct!');
-  } else {
-    console.log(`${answer} is wrong answer ;(. Correct answer was ${keyAswer}.`);
-    mark = false;
-  }
+    return 1;
+  } 
+  lose(answer, correctAnswer, name);
+  return 0;
 }
-if (mark === true) {
-  console.log(`Congratulations, ${playerName}!`);
-} else {
-  console.log(`Let's try again, ${playerName}!`);
-}
+
+const brainGame = brainEven;
+const name = user();
+console.log('Answer "yes" if the number is even, otherwise answer "no".');
+brainGamesStart(brainGame, name);
