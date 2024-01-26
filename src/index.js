@@ -7,3 +7,14 @@ export const brainGamesStart = (brainGame, name) => {
     }
     console.log(`Congratulations, ${name}!`);
 }
+
+export const brainCalc = (calc, username) => {
+    for (let i = 0; i < repeats; i += 1) {
+        if (calc(username) === 0) {
+            return 0;
+        }
+    }
+    console.log(`Congratulations, ${username}!`);
+}
+
+
