@@ -17,4 +17,11 @@ export const brainCalc = (calc, username) => {
     console.log(`Congratulations, ${username}!`);
 }
 
-
+export const brainnod = (nod, username) => {
+    for (let i = 0; i < repeats; i += 1) {
+        if (nod(username) === 0) {
+            return 0;
+        }
+    }
+    console.log(`Congratulations, ${username}!`);
+}
