@@ -2,6 +2,6 @@
 /* eslint-disable import/extensions */
 
 // eslint-disable-next-line import/named
-import { user } from '../src/cli.js';
+import { User } from '../src/cli.js';
 
-user();
+User();

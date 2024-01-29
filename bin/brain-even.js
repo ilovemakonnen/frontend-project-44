@@ -4,6 +4,9 @@ import { lose } from '../src/cli.js';
 import { brainGamesStart } from '../src/index.js';
 import { user } from '../src/cli.js';
 
+const require = createRequire(import.meta.url);
+const readlineSync = require('readline-sync');
+
 export const brainEven = (name) => {
   const number = Math.floor(Math.random() * 100);
   console.log(`Question: ${number}`);
