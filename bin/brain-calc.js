@@ -1,34 +1,38 @@
 #!/usr/bin/env node
+/* eslint no-eval: 0 */
 import readlineSync from 'readline-sync';
-import { lose } from '../src/cli.js';
-import { brainGamesStart } from '../src/index.js';
-import { user } from '../src/cli.js';
+import { User } from '../src/cli.js';
+import { brainGameStart } from '../src/index.js';
 
-export const brainCalc = () => {
-    const znaki = ['+','-','*'];
-    const number = Math.floor(Math.random() * 100);
-    const numberTwo = Math.floor(Math.random() * 100);
-    const randomZnak = Math.floor(Math.random() * 2);
-    console.log(`Question: ${number}${znaki[randomZnak]}${numberTwo}`);
-    const answer = parseInt(readlineSync.question('Your answer: '));
-    let correctAnswer = 0;
-    if (randomZnak === 0 ) {
-      correctAnswer = number + numberTwo;
-    } else if (randomZnak === 1) {
-      correctAnswer = number - numberTwo;
-    } else if (randomZnak === 2) {
-      correctAnswer = number * numberTwo;
-    }
-
-    if (answer === correctAnswer) {
-        console.log('Correct!');
-        return 1;
-    }
-    lose(answer, correctAnswer, name);
+function randomOperation() {
+  const operations = ['+', '-', '*'];
+  const randomIndex = Math.floor(Math.random() * operations.length);
+  return operations[randomIndex];
+}
+function generateMathExpression() {
+  const num1 = Math.floor(Math.random() * 101);
+  const num2 = Math.floor(Math.random() * 101);
+  const operator = randomOperation();
+  return `${num1} ${operator} ${num2}`;
+}
+function calculateExpression(expression) {
+  return eval(expression);
+}
+function brainCalc(PlayerName) {
+  const expression = generateMathExpression();
+  const correctAnswer = calculateExpression(expression);
+  console.log(`Question: ${expression}`);
+  const answer = readlineSync.question('Your answer: ');
+  if (parseInt(answer, 10) === correctAnswer) {
+    console.log('Correct!');
+    return 1;
+  }
+  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+  console.log(`Let's try again, ${PlayerName}!`);
   return 0;
 }
+const gameName = brainCalc;
+const PlayerName = User();
 
-const brainGameCalc = brainCalc;
-const name = user();
 console.log('What is the result of the expression?');
-brainGamesStart(brainGameCalc, name);
+brainGameStart(PlayerName, gameName);
