@@ -1,7 +1,5 @@
-/* eslint-disable no-console */
 // eslint-disable-next-line import/prefer-default-export
-/* eslint-disable import/named */
-export default function brainGameStart(PlayerName, gameName) {
+export function brainGameStart(PlayerName, gameName) {
   let correctCount = 0;
   while (correctCount < 3) {
     if (gameName(PlayerName) === 1) {
