@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);

@@ -1,5 +1,8 @@
 #!/usr/bin/env node
+/* eslint-disable import/named */
+/* eslint-disable import/extensions */
 /* eslint no-eval: 0 */
+/* eslint-disable no-console */
 import readlineSync from 'readline-sync';
 import { User } from '../src/cli.js';
 import { brainGameStart } from '../src/index.js';
