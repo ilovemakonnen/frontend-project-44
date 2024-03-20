@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 
 // eslint-disable-next-line import/named
-import { User } from '../src/cli.js';
 
-User();
+import { welcome } from '../src/cli.js';
+
+welcome();
