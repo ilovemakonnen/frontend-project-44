@@ -7,7 +7,7 @@ import { getRandomInt } from '../cli.js';
 import { answerCheck, getAnswer } from '../index.js';
 
 export const str = 'What number is missing in the progression?';
-export const a = 3; // 
+export const a = 3; //
 const progressionMaxLen = 15;
 const progressionMinLen = 5;
 const progressionMaxStep = 10;

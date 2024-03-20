@@ -6,7 +6,6 @@
 import { getRandomInt } from '../cli.js';
 import { answerCheck, getAnswer } from '../index.js';
 
-
 export const str = 'Find the greatest common divisor of given numbers.';
 export const c = 3;
 const randMax = 100;
